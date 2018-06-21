@@ -12,7 +12,7 @@
 
 200.times do
   Songs.create([{
-    name: Faker::Name,
+    name: Faker::Name.name,
     brand: Faker::Music.band,
     album: Faker::Music.album,
     genre: Faker::Music.genre,
