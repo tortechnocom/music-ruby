@@ -15,8 +15,8 @@ Assignment#1: Ruby Model, generate songs and query (Ice)
 
 Assignment#2 Ruby Controller, view, json (Top)
 
-- Get 3 songs view: http://localhost:3000/songs/three-songs
-- Get 3 songs JSON: http://localhost:3000/songs/three-songs-json
+- Get 3 songs view: http://localhost:3000/song/html
+- Get 3 songs JSON: http://localhost:3000/song/json
 
 
 
