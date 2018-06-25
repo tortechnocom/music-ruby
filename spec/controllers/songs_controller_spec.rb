@@ -7,6 +7,6 @@ describe "songs controller spec", :type => :request do
   end
   it 'check songs is instance of Songs' do
     get '/song/html'
-    expect(assigns[:songs].instance_of?(Songs.all.class))
+    expect(assigns[:songs].first.instance_of?(Songs)).to eq(true)
   end
 end
