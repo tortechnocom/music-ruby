@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'song checking' , js: true do
+describe 'song checking' , :type => :request do
   it 'check 3 songs in html' do
     visit '/song/html'
     # save_screenshot('/home/tor/one-dee/song-html.png', :full => true)
@@ -14,7 +14,9 @@ describe 'song checking' , js: true do
   end
   
   it 'check 3 columns in html' do
-    visit 'song/html'
+    get '/song/html'
+    songs = assigns[:songs]
+    visit '/song/html'
     # check headers
     within('table') do
       expect(page).to have_xpath("thead/tr/th[1]", text: "Name")
@@ -22,11 +24,13 @@ describe 'song checking' , js: true do
       expect(page).to have_xpath("thead/tr/th[3]", text: "Album")
     end
     # check content
-    3.times do |index1|
-      3.times do |index2|
-        content = find(:xpath, "/html/body/table/tbody/tr[#{index1+1}]/td[#{index2+1}]").text
-        expect(content).not_to eq('') 
-      end
+    3.times do |index|
+      content = find(:xpath, "/html/body/table/tbody/tr[#{index+1}]/td[1]").text
+      expect(content).to eq(songs[index].name)
+      content = find(:xpath, "/html/body/table/tbody/tr[#{index+1}]/td[2]").text
+      expect(content).to eq(songs[index].brand)
+      content = find(:xpath, "/html/body/table/tbody/tr[#{index+1}]/td[3]").text
+      expect(content).to eq(songs[index].album)
     end
   end
 end
