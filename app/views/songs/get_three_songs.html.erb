@@ -13,8 +13,8 @@
 
   <tbody>
     <% @songs.each do |song| %>
-      <tr>
-        <td><%= song.name %></td>
+      <tr class="check-data">
+        <td><%= song.name %><a></a></td>
         <td><%= song.brand %></td>
         <td><%= song.album %></td>
         <td><%= song.genre %></td>
